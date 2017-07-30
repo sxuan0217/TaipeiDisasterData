@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv=”Content-Language” content=”zh-tw”>
+    <meta name="keywords" content="台北最新災害資訊">
+    <meta name="author" content="Xuan0217">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--fb-->
+    <meta property="og:title" content="台北最新災害資訊" />
+    <meta property="og:description" content="最新災害資訊" />
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:site_name" content="台北最新災害資訊" />
+    <!-- 網站名稱 -->
+    <title>台北最新災害資訊</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <!--本地CSS-->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <!--pure.css-->
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />
+    <!--BOOTSTRAP-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--BOOTSRAP-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <!--animate.css-->
+</head>
+
+<body>
+    <div class="header">
+        <h1 class='text-center title'>台北最新災害資訊</h1>
+    </div>
+    <!--End of header-->
+    <div id="wrap" class='wrap'>
+
+        <div id='selectItem' class="text-center topFix selectBarDiv">
+
+            <select v-model="selectArea" @change.prevent="reSetPage()" class='selectBar text-center'>
+                <option value="--請選擇行政區--">--請選擇行政區--</option>   
+                <option value="萬華區">萬華區</option>
+                <option value="中正區">中正區</option>
+                <option value="大同區">大同區</option>
+                <option value="中山區">中山區</option>
+                <option value="大安區">大安區</option>
+                <option value="南港區">南港區</option>
+                <option value="文山區">文山區</option>
+                <option value="松山區">松山區</option>
+                <option value="信義區">信義區</option>
+                <option value="士林區">士林區</option>
+                <option value="北投區">北投區</option>
+                <option value="內湖區">內湖區</option>
+            </select>
+            <!--選擇行政區BAR-->
+        </div>
+        <!--End of selectItem-->
+
+        <!--  <div class="text-center pageBox">
+            <ul class='pagination'>
+                <li v-bind:class="{'disabled': (currPage === 1)}" 
+                    @click.prevent="setPage(currPage-1)"><a href="#"> << </a></li>
+                
+                <li v-for="n in totalPage"
+                    v-bind:class="{'active': (currPage === (n))}" 
+                    @click.prevent="setPage(n)"><a href="#">{{n}}</a></li>
+                
+                <li v-bind:class="{'disabled': (currPage === totalPage)}" 
+                    @click.prevent="setPage(currPage+1)"><a href="#"> >> </a></li>
+                
+            </ul>
+    </div> -->
+
+        <div class="tableBox">
+            <table class="table table-striped ">
+                <tr>
+                    <th>行政區</th>
+                    <th>時間</th>
+                    <th>狀況</th>
+
+                </tr>
+
+                <tr class='animated fadeIn' v-for="(r, index) in filteredRows.slice(pageStart, pageStart + countOfPage)" :key='r.CaseTime'>
+                    <td class='area '><a href="#" class="pure-button pure-button-primary">{{ r.CaseLocationDistrict }}</a></td>
+                    <td class='caseTime'>{{ r.CaseTime }}</td>
+                    <td class='textTD'>{{ r.CaseDescription }}</td>
+
+                </tr>
+            </table>
+        </div>
+        <!--End of tablebox div-->
+
+        <div class="text-center pageBox">
+            <ul class='pagination'>
+                <li v-bind:class="{'disabled': (currPage === 1)}" @click.prevent="setPage(currPage-1)">
+                    <a href="#">
+                        << </a>
+                </li>
+
+                <li v-for="n in totalPage" v-bind:class="{'active': (currPage === (n))}" @click.prevent="setPage(n)"><a href="#">{{n}}</a></li>
+
+                <li v-bind:class="{'disabled': (currPage === totalPage)}" @click.prevent="setPage(currPage+1)"><a href="#"> >> </a></li>
+
+            </ul>
+
+        </div>
+        <!--End of pagination div-->
+
+        <div class="footer">
+            <p class="text-center footerItem">資料來源:臺北市府資訊</p>
+            <br>
+            <a class="text-center footerItem" href="https://github.com/sxuan0217" target="blank"><img class='icon' src="./img/github.png" alt="github"></a>
+        </div>
+        <!--End of footer div-->
+        <div class="gotop"><img src="./img/go-top.png" alt=""></div>
+        <!--End of gotop div-->
+    </div>
+    <!--End of wrap-->
+
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <!--jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+    <!--vue-->
+    <script src="./js/custom.js"></script>
+    <!--本地JS-->
+</body>
+
+</html>
