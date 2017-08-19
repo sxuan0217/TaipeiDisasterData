@@ -1,5 +1,7 @@
 body {
     font-size: 30px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 select {
@@ -14,9 +16,11 @@ option {
     /* reset to left*/
 }
 
-.wrap {
+.container {
     width: 100%;
+    min-height: calc(100vh - 80px);
     margin: 0 auto;
+    
 }
 
 .header {
@@ -36,24 +40,41 @@ option {
     margin-bottom: 20px;
 }
 
+.selectBar{
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 32px;
+}
+
+
+
 .area {
-    width: 100px;
+    width: 20%;
     height: 40px;
 }
 
 .caseTime {
-    width: 200px;
+    width: 20%;
     height: 40px;
 }
 
+
 .textTD {
-    width: calc(100% - 300px)
+    width: 55%
 }
 
 .tableBox {
     min-height:1000px;
     width: 80%;
     margin: 0 auto;
+}
+@media (max-width: 768px){
+   .tableBox {
+    width: 98%;
+    margin: 0 auto;
+    font-size: 18px;
+}
+    
 }
 
 .pageBox {
@@ -93,4 +114,7 @@ option {
 
 .footerItem {
     display: inline-block;
+}
+.custombtn{
+    width: 100%
 }

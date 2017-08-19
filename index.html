@@ -19,8 +19,6 @@
     <!--本地CSS-->
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
     <!--pure.css-->
-    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />
-    <!--BOOTSTRAP-->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!--BOOTSRAP-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
@@ -32,7 +30,7 @@
         <h1 class='text-center title'>台北最新災害資訊</h1>
     </div>
     <!--End of header-->
-    <div id="wrap" class='wrap'>
+    <div class='container'>
 
         <div id='selectItem' class="text-center topFix selectBarDiv">
 
@@ -80,7 +78,7 @@
                 </tr>
 
                 <tr class='animated fadeIn' v-for="(r, index) in filteredRows.slice(pageStart, pageStart + countOfPage)" :key='r.CaseTime'>
-                    <td class='area '><a href="#" class="pure-button pure-button-primary">{{ r.CaseLocationDistrict }}</a></td>
+                    <td class='area '><a href="#" class="pure-button pure-button-primary custombtn">{{ r.CaseLocationDistrict }}</a></td>
                     <td class='caseTime'>{{ r.CaseTime }}</td>
                     <td class='textTD'>{{ r.CaseDescription }}</td>
 

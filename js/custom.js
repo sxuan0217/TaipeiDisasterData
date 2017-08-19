@@ -2,7 +2,7 @@
 //中文解說
 
 var app = new Vue({ //Vue stard
-    el: '#wrap',
+    el: '.container',
     data: {
         rows: [], //存放得到的資料
         countOfPage: 50, //一頁顯示50筆
