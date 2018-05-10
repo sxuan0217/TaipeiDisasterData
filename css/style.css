@@ -116,5 +116,11 @@ option {
     display: inline-block;
 }
 .custombtn{
-    width: 100%
+    width: 100%;
+    opacity:1 !important;
+}
+
+.Tips{
+    text-align: center;
+    font-size: 40px;
 }

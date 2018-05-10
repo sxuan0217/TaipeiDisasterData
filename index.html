@@ -67,8 +67,8 @@
                 
             </ul>
     </div> -->
-
-        <div class="tableBox">
+        <div class="tableBox" 
+            v-if='filteredRows.slice(pageStart, pageStart + countOfPage).length !== 0'>
             <table class="table table-striped ">
                 <tr>
                     <th>行政區</th>
@@ -77,24 +77,36 @@
 
                 </tr>
 
-                <tr class='animated fadeIn' v-for="(r, index) in filteredRows.slice(pageStart, pageStart + countOfPage)" :key='r.CaseTime'>
-                    <td class='area '><a href="#" class="pure-button pure-button-primary custombtn">{{ r.CaseLocationDistrict }}</a></td>
+                <tr 
+                    class='animated fadeIn' 
+                    v-for="(r, index) in filteredRows.slice(pageStart, pageStart + countOfPage)" 
+                    :key='r.CaseTime'
+                    >
+                    <td class='area '><a href="#" class="pure-button pure-button-primary custombtn" disabled>{{ r.CaseLocationDistrict }}</a></td>
                     <td class='caseTime'>{{ r.CaseTime }}</td>
                     <td class='textTD'>{{ r.CaseDescription }}</td>
-
                 </tr>
             </table>
         </div>
+        <div v-else>
+            <p class='Tips'> 該行政區尚未有回報之災害 </p>
+        </div>
         <!--End of tablebox div-->
 
-        <div class="text-center pageBox">
+        <div class="text-center pageBox" 
+            v-if='filteredRows.slice(pageStart, pageStart + countOfPage).length !== 0'>
             <ul class='pagination'>
-                <li v-bind:class="{'disabled': (currPage === 1)}" @click.prevent="setPage(currPage-1)">
+                <li v-bind:class="{'disabled': (currPage === 1)}" 
+                    @click.prevent="setPage(currPage-1)">
                     <a href="#">
                         << </a>
                 </li>
 
-                <li v-for="n in totalPage" v-bind:class="{'active': (currPage === (n))}" @click.prevent="setPage(n)"><a href="#">{{n}}</a></li>
+                <li 
+                    v-for="n in totalPage" 
+                    v-bind:class="{'active': (currPage === (n))}" 
+                    @click.prevent="setPage(n)">
+                    <a href="#">{{n}}</a></li>
 
                 <li v-bind:class="{'disabled': (currPage === totalPage)}" @click.prevent="setPage(currPage+1)"><a href="#"> >> </a></li>
 
@@ -103,15 +115,15 @@
         </div>
         <!--End of pagination div-->
 
-        <div class="footer">
-            <p class="text-center footerItem">資料來源:臺北市府資訊</p>
-            <br>
-            <a class="text-center footerItem" href="https://github.com/sxuan0217" target="blank"><img class='icon' src="./img/github.png" alt="github"></a>
-        </div>
-        <!--End of footer div-->
         <div class="gotop"><img src="./img/go-top.png" alt=""></div>
         <!--End of gotop div-->
     </div>
+    <div class="footer">
+        <p class="text-center footerItem">資料來源:臺北市府資訊</p>
+        <br>
+        <a class="text-center footerItem" href="https://github.com/sxuan0217" target="blank"><img class='icon' src="./img/github.png" alt="github"></a>
+    </div>
+    <!--End of footer div-->
     <!--End of wrap-->
 
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
